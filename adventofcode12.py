@@ -58,28 +58,24 @@ def separate_combinations(springs_list, combinations_list, summary):
     """
 
     counter = 0
-    counter1 = 0
     combinations_list1 = []
     springs_list1 = []
     for springs in springs_list:
         for spring1 in springs:
             if spring1 == "#":
                 counter += 1
-                counter1 += 1
             else:
                 if counter > 0:
                     combinations_list1.append(counter)
                 counter = 0
         if counter > 0:
             combinations_list1.append(counter)
-        if combinations_list1 == combinations_list and summary == counter1 and combinations_list[::-1] == combinations_list1[::-1]:
+        if combinations_list1 == combinations_list and summary == sum(combinations_list1) and combinations_list[::-1] == combinations_list1[::-1]:
             springs_list1.append(springs)
             counter = 0
-            counter1 = 0
             combinations_list1.clear()
         else:
             counter = 0
-            counter1 = 0
             combinations_list1.clear()
     return len(springs_list1)
 
